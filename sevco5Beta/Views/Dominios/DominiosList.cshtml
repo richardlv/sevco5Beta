@@ -1,0 +1,28 @@
+﻿@using sevco5Beta.ViewModels
+@using sevco5Beta.Models
+@model DominiosListViewModel
+
+@{
+    ViewBag.Title = "DominiosList";
+}
+
+<h2>DominiosList</h2>
+
+<table>
+    <tr>
+        <td>Id</td>
+        <td>nombre </td>
+        <td>descripcion</td>
+    </tr>
+
+
+    @foreach(dominios item in Model.DominiosList)
+    {
+        <tr>
+            <td>@Html.ActionLink("Ver Procesos", "ProcesosList", "Procesos", new { id=item.Id_dominio},null) </td>
+            <td>@item.Nombre_dominio</td>
+            <td>@item.Descripcion</td>
+        </tr>
+    }
+
+</table>

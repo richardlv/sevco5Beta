@@ -1,0 +1,29 @@
+﻿@using sevco5Beta.ViewModels
+@using sevco5Beta.Models
+@model ProcesoListViewModel
+
+
+@{
+    ViewBag.Title = "ProcesosList";
+}
+
+<h2>ProcesosList</h2>
+
+<table>
+    <tr>
+        <td>Id</td>
+        <td>nombre </td>
+        <td>descripcion</td>
+    </tr>
+
+
+    @foreach (procesos item in Model.ProcesosLista)
+    {
+        <tr>
+            <td>@Html.ActionLink("Nueba Evaluacion", "PreguntasList", "Procesos", new { id = item.Id_proceso }, null) </td>
+            <td>@item.Proceso</td>
+            <td>@item.Descripcion</td>
+        </tr>
+    }
+
+</table>

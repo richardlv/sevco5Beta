@@ -1,0 +1,54 @@
+﻿@using sevco5Beta.ViewModels
+@using sevco5Beta.Models
+@model EvaluacionesListaViewModel
+
+@{
+    ViewBag.Title = "View1";
+}
+
+<h2>View1</h2>
+
+
+
+    @Html.ActionLink("Nueba Evaluacion", "PreguntasList", "Procesos", new { id = Model.Id_proceso }, null);
+
+
+    
+}
+ 
+
+
+<table class="table">
+    <tr>
+        <th>
+            fecha
+        </th>
+        <th>
+            proceso
+        </th>
+        <th></th>
+    </tr>
+
+      @foreach (Evaluaciones item in Model.ListaEvaluaciones)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.fechaEvaluacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id_proceso)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id_evaluacion }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id_evaluacion }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id_evaluacion })
+            </td>
+        </tr>
+        }
+    
+    
+
+   
+
+
+</table>

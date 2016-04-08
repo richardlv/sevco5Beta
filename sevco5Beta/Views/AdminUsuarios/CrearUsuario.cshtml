@@ -1,0 +1,89 @@
+﻿@model sevco5Beta.Models.usuarios
+
+@{
+    ViewBag.Title = "CrearUsuario";
+}
+
+<header>
+    <script>
+        function ResetForm() {
+            document.getElementById('usuario').value = "";
+            document.getElementById('clave').value = "";
+            document.getElementById('isAdmin').value = "";
+        }
+    </script>
+</header>
+
+<h2>CrearUsuario</h2>
+
+@using (Html.BeginForm("CrearUsuario", "AdminUsuarios", FormMethod.Post)) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>usuarios</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.usuario, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.usuario)
+                @Html.ValidationMessageFor(model => model.usuario)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.clave, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.clave)
+                @Html.ValidationMessageFor(model => model.clave)
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.Label("Seleccione el tipo de usuario")
+            <div class="col-md-10">
+                <select name="isAdmin" id="isAdmin">
+                   
+                    <option value="true">
+                            Administrador
+                    </option>
+
+                    <option value="false" >
+                        Directivo
+                    </option>
+                    
+                </select>
+
+
+                @Html.ValidationMessageFor(model => model.isAdmin)
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" name="btnSubmit" class="btn btn-default" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Cancel" name="btnSubmit" class="btn btn-default" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="button" value="Limpiar" name="btnReset" onclick="ResetForm();" class="btn btn-default" />
+            </div>
+        </div>
+
+
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

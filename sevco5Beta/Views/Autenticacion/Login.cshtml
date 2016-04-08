@@ -1,0 +1,62 @@
+﻿@using sevco5Beta.Models
+@model usuarios
+
+
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Login</h2>
+
+<div class=" panel panel-primary" >
+    <div class="panel-heading">
+        <h2>Bienvenido usuario</h2>
+    </div>
+    <div class="panel-body">
+
+        @Html.ValidationMessage("CredentialError", new { style = "color:red;" })
+        @using (Html.BeginForm("DoLogin", "Autenticacion", FormMethod.Post))
+        { 
+            <table>
+                <tr>
+                    <td>
+                        Digite su usuario:
+                    </td>
+                    
+                </tr>
+                <tr>
+                    <td>
+                        @Html.TextBoxFor(u => u.usuario)
+                    </td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td>
+                        Digite su contraseña:
+                    </td>
+                    
+                </tr>
+                <tr>
+                    <td>
+                        @Html.PasswordFor(u => u.clave)
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" name="btnLogin" value="Iniciar Session"/>
+                    </td>
+                </tr>
+            </table>
+            
+            
+            
+        }
+
+
+    </div>
+
+</div>
+
+
+

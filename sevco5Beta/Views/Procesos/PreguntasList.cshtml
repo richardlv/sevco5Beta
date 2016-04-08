@@ -1,0 +1,57 @@
+﻿@using sevco5Beta.ViewModels
+@using sevco5Beta.Models
+@model PreguntasListViewModel
+@{
+    ViewBag.Title = "PreguntasList";
+}
+
+<h2>PreguntasList</h2>
+
+
+
+@using (Html.BeginForm("procesarDatos", "Procesos", FormMethod.Post))
+{
+      <table>
+        <tr>
+            
+        </tr>
+
+        @{int i=0;
+          sevco5Beta.Models.proceso_respuestas respu = new sevco5Beta.Models.proceso_respuestas();
+
+          }
+        @foreach (preguntas item in Model.PreguntasLista)
+        {
+            <tr>
+                <td></td>
+               <td>@item.pregunta
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    
+                @Html.TextBox("[" + @i + "].Resultado")
+                @Html.Hidden("[" + @i + "].Id_pregunta", @item.Id_pregunta)
+                </td>
+            </tr>
+            <tr>
+
+            </tr>
+            i++;
+        }
+
+        <tr>
+            <td>
+                @Html.Hidden("Id_proceso", @Model.id_proceso)
+                <input type="submit" name="btnSubmit" value="Guardar" />
+               
+                
+                <input type="submit" name="btnSubmit" value="Cancelar" />
+
+            </td>
+            
+        </tr>
+    </table>
+
+
+}
